@@ -4,77 +4,92 @@
 
 /*Primary Stages*/
 body {
-    font-family: "Hind Siliguri", sans-serif;
+  font-family: "Hind Siliguri", sans-serif;
 }
 
 /* Login Page */
 .hero {
-    display: block !important;
+  display: block !important;
 }
 
 .hero-content {
-    margin: auto;
-    margin-top: 60px!important;
+  margin: auto;
+  margin-top: 60px !important;
 }
 
 /* Home Page */
 .card {
-    padding: 0px !important;
-    text-align: left !important;
-    cursor: pointer;
+  padding: 0px !important;
+  text-align: left !important;
+  cursor: pointer;
 }
 
 .card-body {
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: column;
-    padding: var(--padding-card, 1.3rem) !important;
-    gap: 0.5rem;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: var(--padding-card, 1.3rem) !important;
+  gap: 0.5rem;
 }
 
 /* Active button Color */
 .active-color {
-    background: #FF00D3 !important;
-    color: white !important;
+  background: #ff00d3 !important;
+  color: white !important;
+}
+
+/* Custom Price Details */
+.custom-price-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  gap: 20px;
 }
 
 /* Order Now // Book Now */
 
-
 /* Mobile Responsive */
-@media(max-width:900px) {
-    .card {
-        padding: 0px !important;
-        text-align: left !important;
-        cursor: pointer;
-        width: 90%;
-        margin: auto;
-    }
+@media (max-width: 900px) {
+  .card {
+    padding: 0px !important;
+    text-align: left !important;
+    cursor: pointer;
+    width: 90%;
+    margin: auto;
+  }
 
-    .home-container {
-        margin-bottom: 90px;
-    }
+  .home-container {
+    margin-bottom: 90px;
+  }
 
-    .price-container {
-        margin-bottom: 90px;
-    }
-    .table :where(th, td) {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 0.75rem;
-        padding-bottom: 0.75rem;
-        vertical-align: middle;
-        display: block;
-    }
-    .table :where(thead, tfoot) {
-        white-space: nowrap;
-        font-size: 0.75rem;
-        line-height: 1rem;
-        font-weight: 700;
-        color: var(--fallback-bc, oklch(var(--bc)/0.6));
-        display: none;
-    }
-    .order-responsive{
-        width: 100%!important;
-    }
+  .price-container {
+    margin-bottom: 90px;
+  }
+  .table :where(th, td) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    vertical-align: middle;
+    display: block;
+  }
+  .table :where(thead, tfoot) {
+    white-space: nowrap;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 700;
+    color: var(--fallback-bc, oklch(var(--bc) / 0.6));
+    display: none;
+  }
+  .order-responsive {
+    width: 100% !important;
+  }
+  /* Custom Price Details */
+  .custom-price-container {
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 100px;
+  }
 }

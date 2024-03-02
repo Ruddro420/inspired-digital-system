@@ -1,28 +1,32 @@
+// App.js
+import { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import {
   RouterProvider,
   ScrollRestoration,
   createBrowserRouter,
-} from "react-router-dom";
-import "./App.css";
-import PrivateRoute from "./PrivateRoute/PrivateRoute";
-import Sgraphics from "./ServicePlan/Sgraphics";
-import BookOrder from "./pages/BookOrder";
-import CustomPlan from "./pages/CustomPlan";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Main from "./pages/Main";
-import Price from "./pages/Price";
-import Basic from "./plans/Basic";
-import Company from "./plans/Company";
-import Enterprise from "./plans/Enterprise";
+} from 'react-router-dom';
+import './App.css';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import Sgraphics from './ServicePlan/Sgraphics';
+import Preloader from './components/Preloader'; // Import your Preloader component
+import BookOrder from './pages/BookOrder';
+import CustomPlan from './pages/CustomPlan';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Main from './pages/Main';
+import Price from './pages/Price';
+import Basic from './plans/Basic';
+import Company from './plans/Company';
+import Enterprise from './plans/Enterprise';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Login />,
   },
   {
-    path: "/home",
+    path: '/home',
     element: (
       <PrivateRoute>
         <Main />
@@ -30,35 +34,35 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/home",
+        path: '/home',
         element: <Home />,
       },
       {
-        path: "/home/price",
+        path: '/home/price',
         element: <Price />,
       },
       {
-        path: "/home/basic",
+        path: '/home/price/:id',
         element: <Basic />,
       },
       {
-        path: "/home/book",
+        path: '/home/book',
         element: <BookOrder />,
       },
       {
-        path: "/home/company",
+        path: '/home/company',
         element: <Company />,
       },
       {
-        path: "/home/enterprise",
+        path: '/home/enterprise',
         element: <Enterprise />,
       },
       {
-        path: "/home/customplan",
+        path: '/home/customplan',
         element: <CustomPlan />,
       },
       {
-        path: "/home/:title",
+        path: '/home/:title',
         element: <Sgraphics />,
       },
     ],
@@ -66,12 +70,28 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a delay to showcase the preloader
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // Adjust the delay time as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
-      <RouterProvider router={router}>
-        <Home />
-        <ScrollRestoration />
-      </RouterProvider>
+      {loading ? (
+        <Preloader />
+      ) : (
+        <RouterProvider router={router}>
+          <Home />
+          <Toaster />
+          <ScrollRestoration />
+        </RouterProvider>
+      )}
     </>
   );
 }
